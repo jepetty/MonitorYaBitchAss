@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+C:\Users\justi\Dropbox\App Stuff\MonitorYaBitchAss\.metadata\.plugins\org.eclipse.jdt.core
+2561160637.index
