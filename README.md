@@ -1,5 +1,10 @@
 # MonitorYaBitchAss
 Text-messaging monitor app created for CU Hackathon
+## Collaborators
+Jesus Ortiz
+Jessica Petty
+Sigrunn Sky
+Justin Schiller
 ##To do/consider
 - [ ] Create android keyboard
     - [ ] Button
@@ -12,6 +17,8 @@ Text-messaging monitor app created for CU Hackathon
     - [ ] Should include food
 - [ ] Takes into account time of day (stretch)
 - [ ] Go to IBM Watson -> return sentiment
+
+
 ## Order of Operations:
 1. Figure out how to make an android keyboard
 2. Investigate interacting with IBM Watson
