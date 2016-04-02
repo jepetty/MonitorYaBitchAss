@@ -24,3 +24,5 @@ Justin Schiller
 2. Investigate interacting with IBM Watson
 3. Someone chugging away on UI
     Include messages that a person gets (What kind of warning are we sharing with them?)
+
+http://developer.android.com/guide/topics/text/creating-input-method.html
