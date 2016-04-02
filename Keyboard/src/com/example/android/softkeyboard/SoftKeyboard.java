@@ -16,6 +16,7 @@
 
 package com.example.android.softkeyboard;
 
+import android.R;
 import android.app.Dialog;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;

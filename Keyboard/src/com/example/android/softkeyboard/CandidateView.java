@@ -16,6 +16,7 @@
 
 package com.example.android.softkeyboard;
 
+import android.R;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -82,9 +83,9 @@ public class CandidateView extends View {
 
         Resources r = context.getResources();
         
-        setBackgroundColor(r.getColor(R.color.candidate_background));
+        setBackgroundColor(r.getColor(R.color.background_dark));
         
-        mColorNormal = r.getColor(R.color.candidate_normal);
+        mColorNormal = r.getColor(R.color.background_light);
         mColorRecommended = r.getColor(R.color.candidate_recommended);
         mColorOther = r.getColor(R.color.candidate_other);
         mVerticalPadding = r.getDimensionPixelSize(R.dimen.candidate_vertical_padding);
