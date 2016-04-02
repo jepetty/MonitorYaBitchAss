@@ -36,18 +36,18 @@ sentenceOrdinalArray = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 
 
 #Arrays for the messages that could be presented when a certain emotion is present, chosen at random
 
-angerArray = ["you might come off a bit angry...", "you might need to chill.", "you might need to take it down a notch.", "you sound a bit angry.", "you sound sort of moody."]
+angerArray = ["you might come off a bit angry...", "you may or may not sound like a dick", "you might need to chill.", "you might need to take it down a notch.", "you sound a bit angry.", "you sound sort of moody."]
 disgustArray = ["you might want to try to be nicer.", "you could rub someone the wrong way.", "you don't sound very enthused."]
 joyArray =["you say some nice things.", "you are very positive."]
-fearArray=["you sound a little uneasy.", "you're being somewhat paranoid.",""]
-sadnessArray=["sad1","sad2","sad3","sad4"]
+fearArray=["you sound a little uneasy.", "you're being somewhat paranoid."]
+sadnessArray=["it sounds like something is wrong...are you ok?","you sound a little bit under the weather.","sad3","sad4"]
 
 #These are the time ranges we can bug people about. 
 
 if (today11pm < nowtest< today1159pm):
 	messages = messages + "Business hours are over, are you sure? "
 elif (today12am < nowtest < today1259am):
-	messages = messages + "Should you be texting this person this late "
+	messages = messages + "Should you be texting this person this late? "
 elif (today1am < nowtest< today230am):
 	messages = messages + "Heading back from the bars? Just checking. Proceed? "
 elif (today231am < nowtest< today5am):
