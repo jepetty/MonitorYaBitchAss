@@ -36,10 +36,10 @@ sentenceOrdinalArray = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 
 
 #Arrays for the messages that could be presented when a certain emotion is present, chosen at random
 
-angerArray = ["you might come off a bit angry", "you might need to chill.", "you might need to take it down a notch.", "you sound a bit angry.", "you sound sort of moody."]
-disgustArray = ["try to be nicer", "A?", "you do not sound very enthused"]
-joyArray =["What a happy message", "happy2"]
-fearArray=["fear1", "fear2","fear3"]
+angerArray = ["you might come off a bit angry...", "you might need to chill.", "you might need to take it down a notch.", "you sound a bit angry.", "you sound sort of moody."]
+disgustArray = ["you might want to try to be nicer.", "you could rub someone the wrong way.", "you don't sound very enthused."]
+joyArray =["you say some nice things.", "you are very positive."]
+fearArray=["you sound a little uneasy.", "you're being somewhat paranoid.",""]
 sadnessArray=["sad1","sad2","sad3","sad4"]
 
 #These are the time ranges we can bug people about. 
@@ -110,14 +110,19 @@ if(i==0 or i>2):
 		text= "In your text"
 		
 		if ((sentiment2["tone_name"] == "Anger") and (sentiment2["score"] >= .20)):
+			angerChoice = strip(random.sample(angerArray,  1))
 			messages = messages + text +" " + angerChoice + " "
-		elif((sentiment2["tone_name"] == "Disgust") and (sentiment2["score"] >= .20)):	
+		elif((sentiment2["tone_name"] == "Disgust") and (sentiment2["score"] >= .20)):
+			disgustChoice = strip(random.sample(disgustArray,  1))
 			messages = messages + text +" " + disgustChoice " "
-		elif((sentiment2["tone_name"] == "Fear") and (sentiment2["score"] >= .40)):	
+		elif((sentiment2["tone_name"] == "Fear") and (sentiment2["score"] >= .40)):
+			fearChoice = strip(random.sample(fearArray,  1))
 			messages = messages + text + " " +fearhoice " "
-		elif((sentiment2["tone_name"] == "Joy") and (sentiment2["score"] >= .40)):	
+		elif((sentiment2["tone_name"] == "Joy") and (sentiment2["score"] >= .40)):
+			joyChoice = strip(random.sample(joyArray,  1) )
 			messages = messages + text + " " +joyChoice + " "
-		elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .40)):	
+		elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .40)):
+			sadnessChoice = strip(random.sample(sadnessArray,  1) )
 			messages = messages + text + " " +sadnessChoice " "
 # print(i)
 #firebase field = messages	
