@@ -18,6 +18,11 @@ public class WatsonTone {
 		//text = "Innapropriate content";
 		ToneAnalysis tone = service.getTone(text);
 		System.out.println(tone);
+		String pypath = "parse.py";
+		String[] cmd = new String[3];
+		cmd[0] = "python";
+		cmd[1] = pypath;
+		cmd[2] = tone;
 	}
 
 }
