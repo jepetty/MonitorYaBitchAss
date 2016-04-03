@@ -1,6 +1,6 @@
 import json
 from credentials import watsonUser, watsonPassword
-import watson_developer_cloud
+from watson_developer_cloud import ToneAnalyzerV3Beta
 
 def analyze_tone(txt):
 	tone_analyzer = ToneAnalyzerV3Beta(
@@ -11,7 +11,4 @@ def analyze_tone(txt):
 	print(tone)
 	return tone
 
-if __name__ == "main":
-	txt = "Jessica is the best thing ever!! She is so cool!!! I love her so much!!! <3 <3 <3"
-	print(txt)
-	analyze_tone(txt)
+analyze_tone(txt)
