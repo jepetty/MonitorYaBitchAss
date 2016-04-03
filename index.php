@@ -1,8 +1,16 @@
+<?php
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');  
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8"> 
-<title>Bitchyness Tracker</title>
+<title>Monitor Ya Bitch Ass</title>
 
 <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 
@@ -11,7 +19,16 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!-- Optional theme -->
+<!-- Optional theme 
+,
+
+                         success: function(response){
+                             alert(response.message);
+                             alert(response.keys);
+                        },
+						error: function(response) {
+							alert(response);
+						}-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -20,23 +37,27 @@
     $(function(){   
        $('#submit').click(function(){
           var myString = $('#myString').val()
-          window.alert(myString)
-                    $.ajax({
-                        url: "parse.py",
+          window.alert(myString);
+		  var uri = "http://localhost:5000/?any="+encodeURIComponent(myString)
+		  alert(uri);
+			$.ajax({
+                        url: uri,
                         type: "post",
-                        datatype:"json",
-                        data: {'myString': 'myString'},
-
-                         success: function(response){
-                             alert(response.message);
-                             alert(response.keys);
-                        }
-                    });
-                });
-            });
+                        datatype:"text",
+                        data: {'myString': 'myString'}
+                   })
+				   .done(function() {
+					  alert("here");
+					});
+				
+	   });		
+					
+					
+       
+    });
  	
    </script>
-   
+
   <script>
     var ref = new Firebase("https://sigjesus.firebaseio.com/")
 
@@ -47,7 +68,7 @@
           })
        })
  </script>
- 
+
 </head>
 <body>
 
