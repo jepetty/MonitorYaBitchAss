@@ -5,8 +5,14 @@ from pprint import pprint
 import datetime
 import sys
 from firebase import firebase
+
+firebase = firebase.FirebaseApplication('https://sigjesus.firebaseio.com/', None)
+
+# firebase.delete('/users', '1')
+
 script, filename = argv
 with open(filename) as data_file:    
+
     data = json.load(data_file)
 messages=""
 
@@ -104,6 +110,7 @@ for y in range(0, numberofsentences):
 			sadnessChoice = strip(random.sample(sadnessArray,  1) )
 			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence, " + sadnessChoice + " "
 
+
 docTone = data["document_tone"]["tone_categories"][0]["tones"]
 if(i==0 or i>2):
 
@@ -128,6 +135,12 @@ if(i==0 or i>2):
 			messages = messages + text + " " +sadnessChoice + " "
 
 #firebase field = messages	
+
+messages = firebase.post('/messages', None)
+
+
+
 print(messages)
-firebase = firebase.FirebaseApplication('https://sigjesus.firebaseio.com/', None)
-result = firebase.get('', None)
+# messages = firebase.get('', None)
+
+
