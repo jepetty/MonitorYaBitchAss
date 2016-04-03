@@ -35,7 +35,9 @@ header('Access-Control-Allow-Methods: GET, POST');
  <script>
  
     $(function(){   
-       $('#submit').click(function(){
+      $('#submit').click(function(){
+
+
           var myString = $('#myString').val()
           window.alert(myString);
 		  var uri = "http://localhost:5000/?any="+encodeURIComponent(myString)
@@ -45,6 +47,7 @@ header('Access-Control-Allow-Methods: GET, POST');
                         type: "post",
                         datatype:"text",
                         data: {'myString': 'myString'}
+<<<<<<< Updated upstream
                    })
 				   .done(function() {
 					  alert("here");
@@ -60,15 +63,64 @@ header('Access-Control-Allow-Methods: GET, POST');
 
   <script>
     var ref = new Firebase("https://sigjesus.firebaseio.com/")
+=======
 
-    ref.child('messages').on('value', function(snapshot){
+                        //  success: function(response){
+                        //      alert(response.message);
+                        //      alert(response.keys);
+                        // }
+                    });
+>>>>>>> Stashed changes
+
+
+
+
+
+      console.log("heer");
+
+      var ref = new Firebase("https://sigjesus.firebaseio.com/")
+
+      
+      ref.child('messages').on('value', function(snapshot){
        snapshot.forEach(function(messages){
           var key = messages.val();
           console.log(key)
+          var mess = key.messages;
+          console.log(mess);
+          // $("#message").text(key);
+          //
+       //when the document is finished loading, replace everything
+       //between the <a ...> </a> tags with the value of splitText
+            document.getElementById("message").innerHTML=mess;
+         //sss } 
           })
        })
+<<<<<<< Updated upstream
  </script>
 
+=======
+
+
+
+
+
+
+
+
+
+
+      });
+
+
+
+
+
+
+
+      });
+ 	
+   </script>
+>>>>>>> Stashed changes
 </head>
 <body>
 
@@ -82,7 +134,12 @@ header('Access-Control-Allow-Methods: GET, POST');
     font-size: 50px;  
 	}
 </style>
-
+<script>
+  $("#submit").click(function(){
+    
+  });
+    
+ </script>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="nav">
   <div class="container">
     <div class="navbar-header">
@@ -93,9 +150,9 @@ header('Access-Control-Allow-Methods: GET, POST');
 <form>
 <h1>What are you planning on saying?</h1>
 <textarea class="form-control" rows="3" value="What is the message you are thinking of sending?" id="myString" type="text"></textarea>
-<button id="submit" type="submit"class="btn btn-default">Whats the sentiment?</button>
-
+<button id="submit" type="submit"class="btn btn-default" >Whats the sentiment?</button>
 </form>
+<a id="message"></a>
 
 <!-- JavaScript files should be linked at the bottom of the page  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
