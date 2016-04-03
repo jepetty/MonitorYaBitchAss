@@ -42,18 +42,18 @@ angerArray = ["you might come off a bit angry...", "you may or may not sound lik
 disgustArray = ["you might want to try to be nicer.", "you could rub someone the wrong way.", "you do not sound very enthused."]
 joyArray =["you say some nice things.", "you are very positive."]
 fearArray=["you sound a little uneasy.", "you are being somewhat paranoid."]
-sadnessArray=["it sounds like something is wrong...are you ok?","you sound a little bit under the weather.","sad3","sad4"]
+sadnessArray=["it sounds like something is wrong...are you ok?","you sound a little bit under the weather.","it sounds like you haz the sadz.","sad4"]
 
 #These are the time ranges we can bug people about. 
 
 if (today11pm < nowtest< today1159pm):
-	messages = messages + "Business hours are over, are you sure? "
+	messages = messages + "Business hours are over, it might be a little late "
 elif (today12am < nowtest < today1259am):
 	messages = messages + "Should you be texting this person this late? "
 elif (today1am < nowtest< today230am):
-	messages = messages + "Heading back from the bars? Just checking. Proceed? "
+	messages = messages + "Heading back from the bars? Just checking. "
 elif (today231am < nowtest< today5am):
-	messages = messages + "This is not an hour to text someone, you can probably wait a couple of hours, proceed? "
+	messages = messages + "This is not an hour to text someone, you can probably wait a couple of hours. "
 elif (today501am < nowtest< today630am):
 	messages = messages + "It'a pretty early this person is probably sleeping, are you sure? "
 #else: 
