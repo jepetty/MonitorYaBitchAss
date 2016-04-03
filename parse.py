@@ -1,6 +1,7 @@
 import json
 import random
 from pprint import pprint
+from watson import analyze_tone
 import datetime
 import sys
 
