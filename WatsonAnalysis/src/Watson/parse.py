@@ -1,14 +1,18 @@
 import json
 import random
+from sys import argv
 from pprint import pprint
 import datetime
 import sys
 from firebase import firebase
 
 firebase = firebase.FirebaseApplication('https://sigjesus.firebaseio.com/', None)
-firebase.delete('/users', '1')
 
-with open('data.json') as data_file:    
+# firebase.delete('/users', '1')
+
+script, filename = argv
+with open(filename) as data_file:    
+
     data = json.load(data_file)
 messages=""
 
@@ -40,10 +44,10 @@ sentenceOrdinalArray = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 
 
 #Arrays for the messages that could be presented when a certain emotion is present, chosen at random
 
-angerArray = ["you might come off a bit angry...", "you may or may not sound like a dick", "you might need to chill.", "you might need to take it down a notch.", "you sound a bit angry.", "you sound sort of moody."]
-disgustArray = ["you might want to try to be nicer.", "you could rub someone the wrong way.", "you don't sound very enthused."]
+angerArray = ["you might come off a bit angry...", "you may or may not sound like a dick.", "you might need to chill.", "you might need to take it down a notch.", "you sound a bit angry.", "you sound sort of moody."]
+disgustArray = ["you might want to try to be nicer.", "you could rub someone the wrong way.", "you do not sound very enthused."]
 joyArray =["you say some nice things.", "you are very positive."]
-fearArray=["you sound a little uneasy.", "you're being somewhat paranoid."]
+fearArray=["you sound a little uneasy.", "you are being somewhat paranoid."]
 sadnessArray=["it sounds like something is wrong...are you ok?","you sound a little bit under the weather.","sad3","sad4"]
 
 #These are the time ranges we can bug people about. 
@@ -83,35 +87,36 @@ for y in range(0, numberofsentences):
 		if ((sentiment["tone_name"] == "Anger") and (sentiment["score"] >= .10)):
 			i=i+1
 			angerChoice = strip(random.sample(angerArray,  1))
-			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + angerChoice + " "
+			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence, " + angerChoice + " "
 
 		elif((sentiment["tone_name"] == "Disgust") and (sentiment["score"] >= .10)):	
 			i=i+1
 			disgustChoice = strip(random.sample(disgustArray,  1))
-			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + disgustChoice + " "
+			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence, " + disgustChoice + " "
 
 		elif((sentiment["tone_name"] == "Fear") and (sentiment["score"] >= .10)):	
 			i=i+1
 			fearChoice = strip(random.sample(fearArray,  1))
-			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + fearChoice + " "
+			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence, " + fearChoice + " "
 
 
 		elif((sentiment["tone_name"] == "Joy") and (sentiment["score"] >= .10)):	
 			i=i+1
 			joyChoice = strip(random.sample(joyArray,  1) )
-			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + joyChoice + " "
+			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence, " + joyChoice + " "
 
 		elif((sentiment["tone_name"] == "Sadness") and (sentiment["score"] >= .10)):	
 			i=i+1
 			sadnessChoice = strip(random.sample(sadnessArray,  1) )
-			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + sadnessChoice + " "
+			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence, " + sadnessChoice + " "
+
 
 docTone = data["document_tone"]["tone_categories"][0]["tones"]
 if(i==0 or i>2):
 
 	for b in range(0, 4):
 		sentiment2 = docTone[b]
-		text= "In your text"
+		text= "In your text,"
 		
 		if ((sentiment2["tone_name"] == "Anger") and (sentiment2["score"] >= .20)):
 			angerChoice = strip(random.sample(angerArray,  1))
@@ -121,7 +126,7 @@ if(i==0 or i>2):
 			messages = messages + text +" " + disgustChoice + " "
 		elif((sentiment2["tone_name"] == "Fear") and (sentiment2["score"] >= .40)):
 			fearChoice = strip(random.sample(fearArray,  1))
-			messages = messages + text + " " +fearhoice + " "
+			messages = messages + text + " " +fearChoice + " "
 		elif((sentiment2["tone_name"] == "Joy") and (sentiment2["score"] >= .40)):
 			joyChoice = strip(random.sample(joyArray,  1) )
 			messages = messages + text + " " +joyChoice + " "
@@ -134,5 +139,8 @@ if(i==0 or i>2):
 messages = firebase.post('/messages', None)
 
 
+
+print(messages)
+# messages = firebase.get('', None)
 
 
