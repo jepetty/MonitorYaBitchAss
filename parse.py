@@ -56,7 +56,11 @@ joyArray =["you say some nice things.", "you are very positive."]
 fearArray=["you sound a little uneasy.", "you are being somewhat paranoid."]
 sadnessArray=["it sounds like something is wrong... Are you ok?","you sound a little bit under the weather.", \
 "it sounds like you haz the sadz."]
-
+angerImages=["Images/Angry/AngryBird.jpg","Images/Angry/Cat.jpg","Images/Angry/Challenged.jpg","Images/Angry/Chicken.jpg","Images/Angry/Hate everything.jpg"]
+disgustImages = ["Images/Disgust/FreshPrince.jpg","Images/Disgust/MontyPython.jpg","Images/Disgust/Picard.jpg","Images/Disgust/dsgstd.gif","Images/Disgust/kristen-wiig-target-lady-grossed-out.gif"]
+fearImages = ["Images/Fear/Bread.jpg","Images/Fear/Dog.jpg","Images/Fear/PoolShark.jpg","Images/Fear/Turtle.jpg","Images/Fear/WaterBallon.jpg"]
+joyImages = ["Images/Joy/Elephant.jpg","Images/Joy/hedgehog.jpg","Images/Joy/Rabbits.jpg","Images/Joy/Seal.jpg","Images/Joy/Turtle.jpg","Images/Joy/laughing-baby.jpg"]
+sadImages = ["Images/Sad/Frog.jpg","Images/Sad/SadCat.jpg","Images/Sad/Sheldon.jpg","Images/Sad/StarWars.jpg","Images/Sad/Trex.jpg"]
 #These are the time ranges we can bug people about. 
 
 if (today11pm < nowtest< today1159pm):
@@ -118,26 +122,35 @@ if ("sentences_tone" in data):
 docTone = data["document_tone"]["tone_categories"][0]["tones"]
 
 if(i<2):
-
+	flag = 0
 	for b in range(0, 5):
-		sentiment2 = docTone[b]
-		text= "In your text"
-		
-		if ((sentiment2["tone_name"] == "Anger") and (sentiment2["score"] >= .20)):
-			angerChoice = strip(random.sample(angerArray, 1))
-			messages = messages + text + " " + angerChoice + " "
-		elif((sentiment2["tone_name"] == "Disgust") and (sentiment2["score"] >= .20)):	
-			disgustChoice = strip(random.sample(disgustArray, 1))
-			messages = messages + text + " " + disgustChoice + " "
-		elif((sentiment2["tone_name"] == "Fear") and (sentiment2["score"] >= .40)):	
-			fearChoice = strip(random.sample(fearArray, 1))
-			messages = messages + text + " " + fearChoice + " "
-		elif((sentiment2["tone_name"] == "Joy") and (sentiment2["score"] >= .40)):	
-			joyChoice = strip(random.sample(joyArray, 1))
-			messages = message + text + " " + joyChoice + " "
-		elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .010)):	
-			sadnessChoice = strip(random.sample(sadnessArray, 1))
-			messages = messages + text + " " + sadnessChoice + " "
+		if(flag==0):
+			sentiment2 = docTone[b]
+			text= "In your text"
+			
+			if ((sentiment2["tone_name"] == "Anger") and (sentiment2["score"] >= .20)):
+				flag = 1
+				angerChoice = strip(random.sample(angerArray, 1))
+				messages = messages + text + " " + angerChoice + " "
+			elif((sentiment2["tone_name"] == "Disgust") and (sentiment2["score"] >= .20)):
+				flag = 1
+				disgustChoice = strip(random.sample(disgustArray, 1))
+				messages = messages + text + " " + disgustChoice + " "
+			elif((sentiment2["tone_name"] == "Fear") and (sentiment2["score"] >= .40)):
+				flag = 1
+				fearChoice = strip(random.sample(fearArray, 1))
+				messages = messages + text + " " + fearChoice + " "
+			elif((sentiment2["tone_name"] == "Joy") and (sentiment2["score"] >= .40)):	
+				flag = 1
+				joyChoice = strip(random.sample(joyArray, 1))
+				messages = message + text + " " + joyChoice + " "
+			elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .30)):
+				flag = 1
+				sadnessChoice = strip(random.sample(sadnessArray, 1))
+				messages = messages + text + " " + sadnessChoice + " "
+	
+	if(flag==0):
+		messages = messages + "The overall tone of your message was neutral."
 	
 print(messages)
 messageJson = {'messages': messages}
