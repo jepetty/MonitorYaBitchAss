@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<?php require'/firebase-php/src/firebaseLib.php';?>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
 
 <head>
 <meta charset="UTF-8"> 
@@ -34,33 +35,23 @@
 </nav>
 
 <form class >
-<h1>What are you planning on sayinggttggg?</h1>
+<h1>What are you planning on saying?</h1>
 <textarea class="form-control" rows="3"></textarea>
-<button type="submit" class="btn btn-default">Whats the sentiment?</button>
+<button type="submit" id= "button" class="btn btn-default">Whats the sentiment?</button>
+
 </form>
 
+ <script>
+    var ref = new Firebase("https://sigjesus.firebaseio.com/")
 
-<?php
-	// echo('ripppp');
+    ref.child('messages').on('value', function(snapshot){
+       snapshot.forEach(function(messages){
+          var key = messages.val();
+          })
+       })
+ </script>
 
-	CONST DEFAULT_URL = 'https://sigjesus.firebaseio.com/';
-	CONST DEFAULT_TOKEN = 'VBCjMRQi5IyEdMb4B2Kt2VFoov8egXyixl5ae4Qw';
-	CONST DEFAULT_PATH = '/sigjesus';
 
-	$firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
-
-	// --- storing an array ---
-	// $firebase->set(DEFAULT_PATH . '/' . $dateTime->format('c'), $test);
-
-	// --- storing a string ---
-	$message = $firebase->get(DEFAULT_PATH . '/document_tone/messages/gyfutyfgyutfytguh');
-	// echo($message);
-	// echo(typeof($message));
-	echo($message);
-	// --- reading the stored string ---
-	// $name = $firebase->get(DEFAULT_PATH . '/name/contact001');
-
-?>
 
 <!-- JavaScript files should be linked at the bottom of the page  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
