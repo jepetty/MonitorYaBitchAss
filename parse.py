@@ -19,7 +19,8 @@ tone_analyzer = ToneAnalyzerV3Beta(
 	username = watsonUser,
 	password = watsonPassword,
 	version = '2016-02-11')
-tone = tone_analyzer.tone(text=input_string)
+
+data = tone_analyzer.tone(text=input_string)
 
 #These are the time ranges we can bug people about. 
 
