@@ -9,7 +9,7 @@ from firebase import firebase
 
 firebase = firebase.FirebaseApplication('https://sigjesus.firebaseio.com/', None)
 
-# firebase.delete('/users', '1')
+firebase.delete('/messages', None)
 
 script, filename = argv
 with open(filename) as data_file:    
@@ -136,12 +136,11 @@ if(i==0 or i>2):
 			messages = messages + text + " " +sadnessChoice + " "
 
 #firebase field = messages	
-
-messages = firebase.post('/messages', None)
-
-
-
 print(messages)
+messageJson = {'messages': messages}
+messages = firebase.post("/messages", messageJson)
+
+
 # messages = firebase.get('', None)
 
 
