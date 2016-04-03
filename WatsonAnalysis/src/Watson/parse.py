@@ -47,8 +47,8 @@ sentenceOrdinalArray = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 
 
 angerArray = ["you might come off a bit angry...", "you may or may not sound like a dick.", "you might need to chill.", "you might need to take it down a notch.", "you sound a bit angry.", "you sound sort of moody."]
 disgustArray = ["you might want to try to be nicer.", "you could rub someone the wrong way.", "you do not sound very enthused."]
-joyArray =["you say some nice things.", "you are very positive."]
-fearArray=["you sound a little uneasy.", "you are being somewhat paranoid."]
+joyArray =["you say some nice things.", "you are very positive." , "you might be keeping your friend."]
+fearArray=["you sound a little uneasy.", "you are being somewhat paranoid.", "you do not sound confident", "you may be "]
 sadnessArray=["it sounds like something is wrong...are you ok?","you sound a little bit under the weather.","it sounds like you haz the sadz.","sad4"]
 
 #These are the time ranges we can bug people about. 
@@ -140,7 +140,5 @@ print(messages)
 messageJson = {'messages': messages}
 messages = firebase.post("/messages", messageJson)
 
-
-# messages = firebase.get('', None)
 
 
