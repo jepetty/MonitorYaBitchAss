@@ -1,0 +1,486 @@
+                                            
+{
+  "document_tone": {
+    "tone_categories": [
+      {
+        "tones": [
+          {
+            "score": 0.251616,
+            "tone_id": "anger",
+            "tone_name": "Anger"
+          },
+          {
+            "score": 0.030314,
+            "tone_id": "disgust",
+            "tone_name": "Disgust"
+          },
+          {
+            "score": 0.058054,
+            "tone_id": "fear",
+            "tone_name": "Fear"
+          },
+          {
+            "score": 0.089909,
+            "tone_id": "joy",
+            "tone_name": "Joy"
+          },
+          {
+            "score": 0.168783,
+            "tone_id": "sadness",
+            "tone_name": "Sadness"
+          }
+        ],
+        "category_id": "emotion_tone",
+        "category_name": "Emotion Tone"
+      },
+      {
+        "tones": [
+          {
+            "score": 0.943,
+            "tone_id": "analytical",
+            "tone_name": "Analytical"
+          },
+          {
+            "score": 0.926,
+            "tone_id": "confident",
+            "tone_name": "Confident"
+          },
+          {
+            "score": 0.525,
+            "tone_id": "tentative",
+            "tone_name": "Tentative"
+          }
+        ],
+        "category_id": "writing_tone",
+        "category_name": "Writing Tone"
+      },
+      {
+        "tones": [
+          {
+            "score": 0.015,
+            "tone_id": "openness_big5",
+            "tone_name": "Openness"
+          },
+          {
+            "score": 0.125,
+            "tone_id": "conscientiousness_big5",
+            "tone_name": "Conscientiousness"
+          },
+          {
+            "score": 0.469,
+            "tone_id": "extraversion_big5",
+            "tone_name": "Extraversion"
+          },
+          {
+            "score": 0.871,
+            "tone_id": "agreeableness_big5",
+            "tone_name": "Agreeableness"
+          },
+          {
+            "score": 0.975,
+            "tone_id": "neuroticism_big5",
+            "tone_name": "Emotional Range"
+          }
+        ],
+        "category_id": "social_tone",
+        "category_name": "Social Tone"
+      }
+    ]
+  },
+  "sentences_tone": [
+    {
+      "sentence_id": 0,
+      "text": "hey I don't know where I left my key can you let me into the apartment.",
+      "input_from": 0,
+      "input_to": 71,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.252765,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.051396,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.183443,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.043635,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.224008,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.379,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "writing_tone",
+          "category_name": "Writing Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.032,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.377,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.626,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.892,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.895,
+              "tone_id": "neuroticism_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ],
+      "className": "original-text--sentence_anger-low"
+    },
+    {
+      "sentence_id": 1,
+      "text": "Let me know if you are home or getting there soon.",
+      "input_from": 72,
+      "input_to": 122,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.091251,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.173212,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.369038,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.084884,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.104406,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.973,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0.739,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "writing_tone",
+          "category_name": "Writing Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.045,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.037,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.624,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.847,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.937,
+              "tone_id": "neuroticism_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ],
+      "className": "original-text--sentence_anger-low"
+    },
+    {
+      "sentence_id": 2,
+      "text": "I've been busy all day and I haven't had a chance to get a temp key.",
+      "input_from": 123,
+      "input_to": 191,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.367338,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.036597,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.031295,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.19663,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.308114,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0.606,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "writing_tone",
+          "category_name": "Writing Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.323,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.559,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.337,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.415,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.816,
+              "tone_id": "neuroticism_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ],
+      "className": "original-text--sentence_anger-low"
+    },
+    {
+      "sentence_id": 3,
+      "text": "bean.",
+      "input_from": 192,
+      "input_to": 197,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "Anger",
+              "tone_name": "Anger",
+              "tone_category_id": "emotion_tone",
+              "tone_category_name": "Emotion Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Disgust",
+              "tone_name": "Disgust",
+              "tone_category_id": "emotion_tone",
+              "tone_category_name": "Emotion Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Fear",
+              "tone_name": "Fear",
+              "tone_category_id": "emotion_tone",
+              "tone_category_name": "Emotion Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Joy",
+              "tone_name": "Joy",
+              "tone_category_id": "emotion_tone",
+              "tone_category_name": "Emotion Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Sadness",
+              "tone_name": "Sadness",
+              "tone_category_id": "emotion_tone",
+              "tone_category_name": "Emotion Tone"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "Analytical",
+              "tone_name": "Analytical",
+              "tone_category_id": "writing_tone",
+              "tone_category_name": "Writing Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Confident",
+              "tone_name": "Confident",
+              "tone_category_id": "writing_tone",
+              "tone_category_name": "Writing Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Tentative",
+              "tone_name": "Tentative",
+              "tone_category_id": "writing_tone",
+              "tone_category_name": "Writing Tone"
+            }
+          ],
+          "category_id": "writing_tone",
+          "category_name": "Writing Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "Openness_Big5",
+              "tone_name": "Openness",
+              "tone_category_id": "social_tone",
+              "tone_category_name": "Social Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Conscientiousness_Big5",
+              "tone_name": "Conscientiousness",
+              "tone_category_id": "social_tone",
+              "tone_category_name": "Social Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Extraversion_Big5",
+              "tone_name": "Extraversion",
+              "tone_category_id": "social_tone",
+              "tone_category_name": "Social Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Agreeableness_Big5",
+              "tone_name": "Agreeableness",
+              "tone_category_id": "social_tone",
+              "tone_category_name": "Social Tone"
+            },
+            {
+              "score": 0,
+              "tone_id": "Neuroticism_Big5",
+              "tone_name": "Emotional Range",
+              "tone_category_id": "social_tone",
+              "tone_category_name": "Social Tone"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ],
+      "className": ""
+    }
+  ]
+}
