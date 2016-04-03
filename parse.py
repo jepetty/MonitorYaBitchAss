@@ -63,15 +63,15 @@ joyImages = ["Images/Joy/Elephant.jpg","Images/Joy/hedgehog.jpg","Images/Joy/Rab
 sadImages = ["Images/Sad/Frog.jpg","Images/Sad/SadCat.jpg","Images/Sad/Sheldon.jpg","Images/Sad/StarWars.jpg","Images/Sad/Trex.jpg"]
 #These are the time ranges we can bug people about. 
 
-if (today11pm < nowtest< today1159pm):
+if (today11pm < now< today1159pm):
 	messages = messages + "Business hours are over, it might be a little late. "
-elif (today12am < nowtest < today1259am):
+elif (today12am < now < today1259am):
 	messages = messages + "Should you be texting this person this late. "
-elif (today1am < nowtest< today230am):
+elif (today1am < now< today230am):
 	messages = messages + "Heading back from the bars? Just checking. "
-elif (today231am < nowtest< today5am):
+elif (today231am < now< today5am):
 	messages = messages + "This is not an hour to text someone, you can probably wait a couple of hours. "
-elif (today501am < nowtest< today630am):
+elif (today501am < now< today630am):
 	messages = messages + "It'a pretty early, this person is probably sleeping, are you sure? "
 
 def strip(uglystring):
@@ -122,36 +122,49 @@ if ("sentences_tone" in data):
 docTone = data["document_tone"]["tone_categories"][0]["tones"]
 
 if(i<2):
-	flag = 0
-	for b in range(0, 5):
-		if(flag==0):
-			sentiment2 = docTone[b]
-			text= "In your text"
-			
-			if ((sentiment2["tone_name"] == "Anger") and (sentiment2["score"] >= .20)):
-				flag = 1
-				angerChoice = strip(random.sample(angerArray, 1))
-				messages = messages + text + " " + angerChoice + " "
-			elif((sentiment2["tone_name"] == "Disgust") and (sentiment2["score"] >= .20)):
-				flag = 1
-				disgustChoice = strip(random.sample(disgustArray, 1))
-				messages = messages + text + " " + disgustChoice + " "
-			elif((sentiment2["tone_name"] == "Fear") and (sentiment2["score"] >= .40)):
-				flag = 1
-				fearChoice = strip(random.sample(fearArray, 1))
-				messages = messages + text + " " + fearChoice + " "
-			elif((sentiment2["tone_name"] == "Joy") and (sentiment2["score"] >= .40)):	
-				flag = 1
-				joyChoice = strip(random.sample(joyArray, 1))
-				messages = message + text + " " + joyChoice + " "
-			elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .30)):
-				flag = 1
-				sadnessChoice = strip(random.sample(sadnessArray, 1))
-				messages = messages + text + " " + sadnessChoice + " "
-	
-	if(flag==0):
+	overtone = angerImages;
+	anger=docTone[0]
+	disgust=docTone[1]
+	fear=docTone[2]
+	joy=docTone[3]
+	sad=docTone[4]
+	text="In your text"
+	ans = anger["score"]
+	dis = disgust["score"]
+	fes = fear["score"]
+	jos = joy["score"]
+	sas = sad["score"]
+	max = ans;
+	if (dis > max):
+		max = dis
+		overtone=disgustImages
+	if (fes > max):
+		max = fes
+		overtone=fearImages
+	if (jos > max):
+		max =jos
+		overtone=joyImages
+	if (sas > max):
+		max = sas
+		overtone = sadImages
+	fireImage = random.sample(overtone,1)
+	if (ans >= .2):
+		angerChoice = strip(random.sample(angerArray, 1))
+		messages = messages + text + " " + angerChoice + " "
+	elif (dis >= .3):
+		disgustChoice = strip(random.sample(disgustArray, 1))
+		messages = messages + text + " " + disgustChoice + " "
+	elif (fes >= .4):
+		fearChoice = strip(random.sample(fearArray, 1))
+		messages = messages + text + " " + fearChoice + " "
+	elif (jos >= .4):
+		joyChoice = strip(random.sample(joyArray, 1))
+		messages = message + text + " " + joyChoice + " "
+	elif (sas >= .3):
+		sadnessChoice = strip(random.sample(sadnessArray, 1))
+		messages = messages + text + " " + sadnessChoice + " "
+	else:
 		messages = messages + "The overall tone of your message was neutral."
-	
-print(messages)
-messageJson = {'messages': messages}
+
+messageJson = {'messages': messages, 'imagePath': fireImage}
 messages = firebase.post("/messages", messageJson)
