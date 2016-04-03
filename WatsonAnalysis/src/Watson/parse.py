@@ -5,6 +5,9 @@ import datetime
 import sys
 from firebase import firebase
 
+firebase = firebase.FirebaseApplication('https://sigjesus.firebaseio.com/', None)
+firebase.delete('/users', '1')
+
 with open('data.json') as data_file:    
     data = json.load(data_file)
 messages=""
@@ -101,7 +104,7 @@ for y in range(0, numberofsentences):
 		elif((sentiment["tone_name"] == "Sadness") and (sentiment["score"] >= .10)):	
 			i=i+1
 			sadnessChoice = strip(random.sample(sadnessArray,  1) )
-			pmessages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + sadnessChoice " "
+			messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + sadnessChoice + " "
 
 docTone = data["document_tone"]["tone_categories"][0]["tones"]
 if(i==0 or i>2):
@@ -115,18 +118,21 @@ if(i==0 or i>2):
 			messages = messages + text +" " + angerChoice + " "
 		elif((sentiment2["tone_name"] == "Disgust") and (sentiment2["score"] >= .20)):
 			disgustChoice = strip(random.sample(disgustArray,  1))
-			messages = messages + text +" " + disgustChoice " "
+			messages = messages + text +" " + disgustChoice + " "
 		elif((sentiment2["tone_name"] == "Fear") and (sentiment2["score"] >= .40)):
 			fearChoice = strip(random.sample(fearArray,  1))
-			messages = messages + text + " " +fearhoice " "
+			messages = messages + text + " " +fearhoice + " "
 		elif((sentiment2["tone_name"] == "Joy") and (sentiment2["score"] >= .40)):
 			joyChoice = strip(random.sample(joyArray,  1) )
 			messages = messages + text + " " +joyChoice + " "
 		elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .40)):
 			sadnessChoice = strip(random.sample(sadnessArray,  1) )
-			messages = messages + text + " " +sadnessChoice " "
+			messages = messages + text + " " +sadnessChoice + " "
 
 #firebase field = messages	
 
-firebase = firebase.FirebaseApplication('https://sigjesus.firebaseio.com/', None)
-result = firebase.get('', None)
+messages = firebase.post('/messages', None)
+
+
+
+
