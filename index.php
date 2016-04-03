@@ -25,7 +25,7 @@
                         url: "parse.py",
                         type: "post",
                         datatype:"json",
-                        data: {'myString': 'myString'}
+                        data: {'myString': 'myString'},
 
                          success: function(response){
                              alert(response.message);
@@ -36,6 +36,7 @@
             });
  	
    </script>
+   
   <script>
     var ref = new Firebase("https://sigjesus.firebaseio.com/")
 
@@ -46,6 +47,7 @@
           })
        })
  </script>
+ 
 </head>
 <body>
 
