@@ -7,6 +7,7 @@ from credentials import watsonUser, watsonPassword
 from watson_developer_cloud import ToneAnalyzerV3Beta
 import datetime
 import sys
+import cgi
 
 firebase = firebase.FirebaseApplication('https://sigjesus.firebaseio.com/', None)
 firebase.delete('/messages', None)
