@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<?php require'/firebase-php/src/firebaseLib.php';?>
+
 <head>
 <meta charset="UTF-8"> 
 <title>Bitchyness Tracker</title>
@@ -32,17 +34,18 @@
 </nav>
 
 <form class >
-<h1>What are you planning on sayinggggg?</h1>
+<h1>What are you planning on sayinggttggg?</h1>
 <textarea class="form-control" rows="3"></textarea>
 <button type="submit" class="btn btn-default">Whats the sentiment?</button>
 </form>
 
 
 <?php
+	// echo('ripppp');
 
-	$DEFAULT_URL = 'https://sigjesus.firebaseio.com/';
-	$DEFAULT_TOKEN = 'VBCjMRQi5IyEdMb4B2Kt2VFoov8egXyixl5ae4Qw';
-	$DEFAULT_PATH = '/sigjesus';
+	CONST DEFAULT_URL = 'https://sigjesus.firebaseio.com/';
+	CONST DEFAULT_TOKEN = 'VBCjMRQi5IyEdMb4B2Kt2VFoov8egXyixl5ae4Qw';
+	CONST DEFAULT_PATH = '/sigjesus';
 
 	$firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 
@@ -50,7 +53,9 @@
 	// $firebase->set(DEFAULT_PATH . '/' . $dateTime->format('c'), $test);
 
 	// --- storing a string ---
-	$message = $firebase->get(DEFAULT_PATH . '/messages/-KEOkXQs_aYC3r9FoXhE');
+	$message = $firebase->get(DEFAULT_PATH . '/document_tone/messages/gyfutyfgyutfytguh');
+	// echo($message);
+	// echo(typeof($message));
 	echo($message);
 	// --- reading the stored string ---
 	// $name = $firebase->get(DEFAULT_PATH . '/name/contact001');
