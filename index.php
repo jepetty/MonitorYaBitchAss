@@ -13,6 +13,8 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -49,8 +51,34 @@
           var key = messages.val();
           })
        })
+    $('#submit').click(function(){
+          var myString = $('#email').val()
+          
+          var taskObject = {
+            email: email
+          }
  </script>
 
+ <script>
+ 
+            $(function()
+            {
+                $('#button').click(function(){
+ 
+                    $.ajax({
+                        url: "parse.py",
+                        type: "post",
+                        datatype:"json",
+                        data: {'myString':" String Value "},
+                        // success: function(response){
+                        //     alert(response.message);
+                        //     alert(response.keys);
+                        // }
+                    });
+                });
+            });
+ 
+        </script>
 
 
 <!-- JavaScript files should be linked at the bottom of the page  -->
