@@ -3,6 +3,7 @@ import random
 from pprint import pprint
 import datetime
 import sys
+from firebase import firebase
 
 with open('data.json') as data_file:    
     data = json.load(data_file)
@@ -124,8 +125,8 @@ if(i==0 or i>2):
 		elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .40)):
 			sadnessChoice = strip(random.sample(sadnessArray,  1) )
 			messages = messages + text + " " +sadnessChoice " "
-# print(i)
+
 #firebase field = messages	
 
-
-	# Disgusted = ["You don't sound very enthused", "try to be nicer", "Are you breaking up with me?"]
+firebase = firebase.FirebaseApplication('https://sigjesus.firebaseio.com/', None)
+result = firebase.get('', None)
