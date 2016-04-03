@@ -14,14 +14,14 @@ firebase.delete('/messages', None)
 # input_string is the string the user gives you to analyze
 script, input_string = argv
 messages=""
-
+#print input_string
 tone_analyzer = ToneAnalyzerV3Beta(
 	username = watsonUser,
 	password = watsonPassword,
 	version = '2016-02-11')
 
 data = tone_analyzer.tone(text=input_string)
-
+#print data
 #These are the time ranges we can bug people about. 
 
 now = datetime.datetime.now()
@@ -49,76 +49,77 @@ sentenceOrdinalArray = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 
 
 #Arrays for the messages that could be presented when a certain emotion is present, chosen at random
 
-angerArray = ["you might come off a bit angry...", "you may or may not sound like a dick", "you might need to chill.", \
+angerArray = ["you might come off a bit angry...", "you may or may not sound like a dick.", "you might need to chill.", \
 "you might need to take it down a notch.", "you sound a bit angry.", "you sound sort of moody."]
-disgustArray = ["you might want to try to be nicer", "you could rub someone the wrong way", "you do not sound very enthused"]
-joyArray =["you say some nice things", "you are very positive"]
-fearArray=["you sound a little uneasy", "you are being somewhat paranoid"]
-sadnessArray=["it sounds like something is wrong... Are you ok?","you sound a little bit under the weather", \
-"it sounds like you haz the sadz"]
+disgustArray = ["you might want to try to be nicer.", "you could rub someone the wrong way.", "you do not sound very enthused."]
+joyArray =["you say some nice things.", "you are very positive."]
+fearArray=["you sound a little uneasy.", "you are being somewhat paranoid."]
+sadnessArray=["it sounds like something is wrong... Are you ok?","you sound a little bit under the weather.", \
+"it sounds like you haz the sadz."]
 
 #These are the time ranges we can bug people about. 
 
 if (today11pm < nowtest< today1159pm):
-	print("Business hours are over, it might be a little late")
+	messages = messages + "Business hours are over, it might be a little late. "
 elif (today12am < nowtest < today1259am):
-	print("Should you be texting this person this late")
+	messages = messages + "Should you be texting this person this late. "
 elif (today1am < nowtest< today230am):
-	print("Heading back from the bars? Just checking.")
+	messages = messages + "Heading back from the bars? Just checking. "
 elif (today231am < nowtest< today5am):
-	print("This is not an hour to text someone, you can probably wait a couple of hours")
+	messages = messages + "This is not an hour to text someone, you can probably wait a couple of hours. "
 elif (today501am < nowtest< today630am):
-	print("It'a pretty early, this person is probably sleeping, are you sure?")
+	messages = messages + "It'a pretty early, this person is probably sleeping, are you sure? "
 
 def strip(uglystring):
 	return str(uglystring).replace('[','').replace("'",'').replace("'",'').replace(']','')
-
-
-numberofsentences = len(data["sentences_tone"])
-
 i=0
+if ("sentences_tone" in data):
+	numberofsentences = len(data["sentences_tone"])
 
-for y in range(0, numberofsentences):
+	
 
-	this = data["sentences_tone"][y]["tone_categories"][0]["tones"]
-	sentencenumber = y + 1
-	# hardcoded tones within "Emotional Sentiment"
-	for x in range(0, 4):
-		sentiment = this[x]
-		
-	# print(
-	# if( data["document_tone"]["tone_categories"][0]["tones"][0]["tone_name"] == "Anger"):
+	for y in range(0, numberofsentences):
 
-		if ((sentiment["tone_name"] == "Anger") and (sentiment["score"] >= .10)):
-			i=i+1
-			angerChoice = strip(random.sample(angerArray,  1))
-			print("In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + angerChoice)
+		this = data["sentences_tone"][y]["tone_categories"][0]["tones"]
+		sentencenumber = y + 1
+		# hardcoded tones within "Emotional Sentiment"
+		for x in range(0, 4):
+			sentiment = this[x]
+			
+		# print(
+		# if( data["document_tone"]["tone_categories"][0]["tones"][0]["tone_name"] == "Anger"):
 
-		elif((sentiment["tone_name"] == "Disgust") and (sentiment["score"] >= .10)):	
-			i=i+1
-			disgustChoice = strip(random.sample(disgustArray,  1))
-			print("In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + disgustChoice)
+			if ((sentiment["tone_name"] == "Anger") and (sentiment["score"] >= .40)):
+				i=i+1
+				angerChoice = strip(random.sample(angerArray,  1))
+				messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + angerChoice + " "
 
-		elif((sentiment["tone_name"] == "Fear") and (sentiment["score"] >= .10)):	
-			i=i+1
-			fearChoice = strip(random.sample(fearArray,  1))
-			print("In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + fearChoice)
+			elif((sentiment["tone_name"] == "Disgust") and (sentiment["score"] >= .40)):	
+				i=i+1
+				disgustChoice = strip(random.sample(disgustArray,  1))
+				messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + disgustChoice + " "
+
+			elif((sentiment["tone_name"] == "Fear") and (sentiment["score"] >= .40)):	
+				i=i+1
+				fearChoice = strip(random.sample(fearArray,  1))
+				messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + fearChoice + " "
 
 
-		elif((sentiment["tone_name"] == "Joy") and (sentiment["score"] >= .10)):	
-			i=i+1
-			joyChoice = strip(random.sample(joyArray,  1) )
-			print("In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + joyChoice)
+			elif((sentiment["tone_name"] == "Joy") and (sentiment["score"] >= .40)):	
+				i=i+1
+				joyChoice = strip(random.sample(joyArray,  1) )
+				messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + joyChoice + " "
 
-		elif((sentiment["tone_name"] == "Sadness") and (sentiment["score"] >= .10)):	
-			i=i+1
-			sadnessChoice = strip(random.sample(sadnessArray,  1) )
-			print("In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + sadnessChoice)
+			elif((sentiment["tone_name"] == "Sadness") and (sentiment["score"] >= .40)):	
+				i=i+1
+				sadnessChoice = strip(random.sample(sadnessArray,  1) )
+				messages = messages + "In the " + sentenceOrdinalArray[sentencenumber] + " sentence " + sadnessChoice + " "
 
 docTone = data["document_tone"]["tone_categories"][0]["tones"]
-if(i==0 or i>2):
 
-	for b in range(0, 4):
+if(i<2):
+
+	for b in range(0, 5):
 		sentiment2 = docTone[b]
 		text= "In your text"
 		
@@ -134,7 +135,7 @@ if(i==0 or i>2):
 		elif((sentiment2["tone_name"] == "Joy") and (sentiment2["score"] >= .40)):	
 			joyChoice = strip(random.sample(joyArray, 1))
 			messages = message + text + " " + joyChoice + " "
-		elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .40)):	
+		elif((sentiment2["tone_name"] == "Sadness") and (sentiment2["score"] >= .010)):	
 			sadnessChoice = strip(random.sample(sadnessArray, 1))
 			messages = messages + text + " " + sadnessChoice + " "
 	
