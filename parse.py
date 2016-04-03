@@ -160,7 +160,7 @@ if(i<2):
 		messages = messages + text + " " + fearChoice + " "
 	elif (jos >= .4):
 		joyChoice = strip(random.sample(joyArray, 1))
-		messages = message + text + " " + joyChoice + " "
+		messages = messages + text + " " + joyChoice + " "
 	elif (sas >= .3):
 		sadnessChoice = strip(random.sample(sadnessArray, 1))
 		messages = messages + text + " " + sadnessChoice + " "
